@@ -1,4 +1,4 @@
-/* Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,15 +11,15 @@ body {
     color: #ffffff;
 }
 
-/* Navbar */
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: rgba(17, 17, 17, 0.6); /* Fundo escuro translúcido */
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+    background: rgba(17, 17, 17, 0.6); 
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
     position: fixed;
     width: 100%;
@@ -35,7 +35,6 @@ body {
     font-weight: bold;
 }
 
-/* Ícone do menu */
 #menu-toggle {
     display: none;
 }
@@ -71,12 +70,12 @@ body {
     font-size: 1.2rem;
 }
 
-/* Exibe menu no mobile */
+
 #menu-toggle:checked + .menu-icon + .nav-links {
     display: flex;
 }
 
-/* Hero Section */
+
 .hero {
     background: radial-gradient(circle at left, rgba(0, 255, 255, 0.151) 1%, rgba(13,13,13,1) 60%);
     color: white;
@@ -96,8 +95,8 @@ body {
 }
 
 .text-container {
-    width: 90%; /* Define o espaço para o texto */
-    text-align: center; /* Garante alinhamento do texto */
+    width: 90%; 
+    text-align: center; 
 }
 
 .text-container img {
@@ -119,9 +118,9 @@ body {
 }
 
 .image-container {
-    width: 90%; /* Define o espaço para a imagem */
+    width: 90%; 
     display: flex;
-    justify-content: center; /* Centraliza a imagem dentro da div */
+    justify-content: center;
     position: relative;
     margin-bottom: 250px;
 }
@@ -132,13 +131,13 @@ body {
 }
 
 .image-container img:first-child {
-    width: 370px; /* Tamanho do fone */
-    z-index: 2; /* Fone na frente */
+    width: 370px; 
+    z-index: 2; 
 }
 
 .image-container img:last-child {
-    width: 350px; /* Tamanho do efeito */
-    z-index: 1; /* Efeito atrás */
+    width: 350px; 
+    z-index: 1;
     opacity: 0.8;
 }
 
@@ -186,7 +185,7 @@ body {
     font-weight: 700;
 }
 
-/* 2ª Dobra - Cards */
+
 .second-fold {
     height: min-content;
     display: flex;
@@ -225,36 +224,52 @@ body {
     
 }
 
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .card {
     display: flex;
     align-items: start;
     flex-direction: column;
-    border-radius: 20px; /* Bordas mais arredondadas */
+    border-radius: 20px; 
     padding: 40px;
-    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
     height: 450px;
-    width: 350px; /* Definindo altura fixa */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, background 0.3s ease;
-    border: 1px solid #51dfa921; /* Definindo a borda para combinar com o fundo */
-    background-color: #1d1d1d; /* Fundo mais escuro para um contraste suave */
+    width: 350px; 
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease;
+    border: 1px solid #51dfa921;
+    background-color: #1d1d1d; 
     text-align: left;
-    
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: slideIn linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 25%;
 }
 
-/* Efeito no hover */
+
+
 .card:hover {
-    transform: translateY(-15px); /* Leve elevação do card */
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4); /* Sombra mais intensa */
-    background-color: #333; /* Leve mudança de cor para evidenciar o hover */
+    transform: translateY(-15px); 
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4); 
+    background-color: #333; 
 }
 
-/* Títulos e texto dos cards */
+
 .card h3 {
     margin-top: 10%;
     font-size: 25px;
     margin-bottom: 10px;
-    color: #00ffcc; /* Cor mais brilhante para o título */
-    font-weight: bold; /* Maior ênfase no título */
+    color: #00ffcc;
+    font-weight: bold; 
     text-align: left;
 }
 
@@ -277,23 +292,36 @@ body {
     height: auto;
 }
 
-/* Alterando a cor dos ícones ou elementos dentro do card */
+
 .card svg, .card img {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .card:hover svg, .card:hover img {
-    transform: scale(1.1); /* Aumenta o ícone/imagem quando o card for "hovered" */
+    transform: scale(1.1); 
 }
 
-/* Responsividade */
 
-/* Responsividade */
+
+
 @media (min-width: 768px) {
-    /* Hero Section */
+
+       .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: #222;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+
     .hero .container {
         display: flex;
-        flex-direction: row; /* Coloca imagem e texto lado a lado */
+        flex-direction: row; 
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -304,8 +332,8 @@ body {
     }
 
     .text-container {
-        width: 50%; /* Define a largura da parte de texto */
-        text-align: left; /* Alinha o texto à esquerda */
+        width: 50%; 
+        text-align: left; 
     }
 
     .text-container p {
@@ -313,7 +341,7 @@ body {
     }
 
     .image-container {
-        width: 50%; /* Define a largura da imagem */
+        width: 50%; 
         position: relative;
         display: flex;
         justify-content: center;
@@ -325,24 +353,24 @@ body {
     }
 
     .image-container img:first-child {
-        width: 600px; /* Ajusta o tamanho da imagem do fone */
+        width: 600px; 
     }
 
     .image-container img:last-child {
-        width: 550px; /* Ajusta o tamanho do efeito */
+        width: 550px; 
         opacity: 0.8;
     }
 
-    /* 2ª Dobra - Cards */
+    
     .cards {
-        flex-direction: row; /* Alinha os cards lado a lado */
+        flex-direction: row; 
         justify-content: center;
-        gap: 30px; /* Maior espaço entre os cards */
+        gap: 30px; 
     }
 
     .card {
         width: 400px;
-        height: 450px; /* Definindo altura fixa */
+        height: 450px; 
         text-align: center;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, background 0.3s ease;
     }
@@ -351,7 +379,7 @@ body {
     
 }
 
-/* Responsividade para telas maiores */
+
 @media (min-width: 1024px) {
     .hero .container {
         padding: 30px;
